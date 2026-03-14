@@ -1,0 +1,105 @@
+
+---
+
+# 🛠️ Git & GitHub: The Master Reference
+
+> **Git:** Local version control tool.
+> **GitHub:** Cloud-based storage and collaboration platform.
+
+## 0. Installation & Setup
+
+On Windows, use **winget** for a quick install:
+
+```powershell
+# Visit https://git-scm.com/ for the installer OR run:
+winget install --id Git.Git -e --source winget
+
+```
+
+---
+
+## 1. Quick Reference Table
++-------------------+---------------------------+-------------------------------------------+
+| Action            | Command                   | Purpose                                   |
++-------------------+---------------------------+-------------------------------------------+       
+| **Initialize**    | `git init`                | Start a new local repository.             |
+| **Clone**         | `git clone <url>`         | Download a project from GitHub.           |
+| **Status**        | `git status`              | See which files are modified or staged.   |
+| **Stage**         | `git add .`               | Prepare all changes for saving.           |
+| **Commit**        | `git commit -m "msg"`     | Save changes with a descriptive note.     |
+| **Push**          | `git push origin main`    | Send local code to GitHub.                |
+| **Pull**          | `git pull`                | Fetch and merge changes from GitHub to PC.|
+| **Log**           | `git log --oneline`       | View a clean history of all commits.      |
++-------------------+---------------------------+-------------------------------------------+
+
+---
+
+## 2. Project Lifecycle (Step-by-Step)
+
+### Phase A: Setup & The `.gitignore`
+
+Always start by creating a `.gitignore` file to keep your repo clean (prevents tracking of junk files).
+
+```powershell
+
+git init                            # Initialize the folder
+dir -force                          # View hidden .git folder (Windows)
+touch .gitignore                    # Create the ignore file
+git add .gitignore                  # Stage the ignore file
+git commit -m "Add gitignore"       # Commit it first
+
+```
+
+### Phase B: Daily Coding Workflow
+
+1. **Modify** your files (e.g., `index.html`).
+2. **Stage** the changes:
+* `git add index.html` (Specific file)
+* `git add .` (All changed files)
+
+
+3. **Commit** the changes:
+* `git commit -m "feat: add navigation bar"`
+
+
+4. **Push** to the cloud:
+* `git push origin main`
+
+
+
+### Phase C: Branching (Working on Features)
+
+Use branches to experiment without breaking your main code. Use **kebab-case** (e.g., `feature-login`).
+
+```powershell
+
+git checkout -b feature-name        # Create AND switch to new branch
+git branch                          # List all branches (check where you are)
+git checkout main                   # Switch back to main branch
+git branch -D feature-name          # Delete a branch (use -D to force)
+
+```
+
+### Phase D: Time Travel & Undoing
+
+If you need to look at old code or fix a mistake:
+
+```powershell
+
+git log --oneline                   # Find the ID (hash) of the commit
+git checkout <commit-id>            # "Jump" to that point in time
+git checkout main                   # Return to the present
+git revert <commit-id>              # Undo a specific commit safely
+
+```
+
+---
+
+## 💡 Pro Tips
+
+* **Visibility:** If you can't see the `.git` folder in Windows Explorer, check "Hidden Items" in the View tab.
+* **Naming:** Use `main` instead of `master` for your primary branch to stay aligned with modern GitHub defaults.
+* **Messages:** Keep commit messages short and descriptive (e.g., "Fix: resolve header alignment" instead of "Fixed stuff").
+
+---
+
